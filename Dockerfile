@@ -1,7 +1,4 @@
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
-COPY . .
-RUN chmod +x gradlew
-RUN --mount=type=cache,target=/app/.gradle ./gradlew build --no-daemon
-EXPOSE 9000
-RUN ["java", "-jar", "/app/build/libs/play-github-action-0.0.1-SNAPSHOT.jar"]
+COPY build/libs/play-github-action-*.jar app.jar
+ENTRYPOINT  ["java", "-jar", "/app.jar"]
