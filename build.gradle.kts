@@ -30,6 +30,7 @@ tasks.withType<Test> {
 }
 
 tasks.jar {
+    enabled = false
     manifest {
         attributes(
             "Main-Class" to "project.githubplayaction.PlayGithubActionApplication"
