@@ -49,14 +49,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       # Download the JAR file from the build job
+      - name: Debug 1
+        run: |
+          ls -al
+          pwd
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
           name: play-github-action-artifact.jar
           path: play-github-action
-      - name: Debug
+      - name: Debug 2
         run: |
           ls -al play-github-action
+          pwd
       # Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
