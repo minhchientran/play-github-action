@@ -45,18 +45,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-#      # Check out the repository
-#      - name: Checkout code
-#        uses: actions/checkout@v4
+      # Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
       # Download the JAR file from the build job
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
-          name: play-github-action-artifact.jar
+          name: play-github-action/play-github-action-artifact.jar
           path: .
       - name: Debug
         run: |
-          ls -al
+          ls -al play-github-action
       # Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -70,4 +70,4 @@ jobs:
           push: true
           tags: tranminhchien/project:latest
           platforms: linux/arm64
-          context: .
+          context: play-github-action
