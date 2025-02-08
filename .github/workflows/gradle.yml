@@ -51,16 +51,18 @@ jobs:
       # Download the JAR file from the build job
       - name: Debug 1
         run: |
-          ls -al
+          ls -la
+          ls -la /home/runner/work/play-github-action/play-github-action
           pwd
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
           name: play-github-action-artifact.jar
-          path: play-github-action
+          path: .
       - name: Debug 2
         run: |
-          ls -al play-github-action
+          ls -la
+          ls -la /home/runner/work/play-github-action/play-github-action
           pwd
       # Log in to Docker Hub
       - name: Log in to Docker Hub
@@ -75,4 +77,4 @@ jobs:
           push: true
           tags: tranminhchien/project:latest
           platforms: linux/arm64
-          context: play-github-action
+          context: .
